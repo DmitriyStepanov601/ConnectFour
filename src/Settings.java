@@ -16,7 +16,7 @@ public class Settings extends JFrame {
 
     /**
      * Constructor - creating a new settings window
-     * @param windowIcon - производитель
+     * @param windowIcon - icon to the application
      * @see Settings#Settings(Image)
      */
     public Settings(Image windowIcon) {
@@ -90,6 +90,7 @@ public class Settings extends JFrame {
 		apply = new JButton("Apply");
         add(apply);
         apply.setBounds(65, 200, 100, 30);
+	apply.setBackground(Color.lightGray);
         apply.addActionListener(e -> {
             if (e.getSource() == apply) {
                 try {
@@ -128,6 +129,7 @@ public class Settings extends JFrame {
 		cancel = new JButton("Cancel");
         add(cancel);
 		cancel.setBounds(175, 200, 100, 30);
+	        cancel.setBackground(Color.lightGray);
 		cancel.addActionListener(e -> {
             if (e.getSource() == cancel) {
                 dispose();
