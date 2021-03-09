@@ -44,17 +44,17 @@ public class AI {
 
 	public Move minimax(Board board) {
 		if (aiPlayer == Constants.PLAYER1) {
-			return max(new Board(board), 0);   // If PLAYER1 is playing, then it wants to maximize the value
+			return max(new Board(board), 0);
 		} else {
-			return min(new Board(board), 0);   // If PLAYER2 is playing, then it wants to minimize the value
+			return min(new Board(board), 0);
 		}
 	}
 	
 	public Move max(Board board, int depth) {
 		Random r = new Random();
-
 		if((board.checkForGameOver()) || (depth == levelAI)) {
-			return new Move(board.getLastMove().getRow(), board.getLastMove().getColumn(), board.evaluate());
+			return new Move(board.getLastMove().getRow(),
+					board.getLastMove().getColumn(), board.evaluate());
 		}
 
 		ArrayList<Board> children = new ArrayList<>(board.getChildren(Constants.PLAYER1));
@@ -81,9 +81,9 @@ public class AI {
 
 	public Move min(Board board, int depth) {
 		Random r = new Random();
-
 		if((board.checkForGameOver()) || (depth == levelAI)) {
-			return new Move(board.getLastMove().getRow(), board.getLastMove().getColumn(), board.evaluate());
+			return new Move(board.getLastMove().getRow(),
+					board.getLastMove().getColumn(), board.evaluate());
 		}
 
 		ArrayList<Board> children = new ArrayList<>(board.getChildren(Constants.PLAYER2));
@@ -118,9 +118,9 @@ public class AI {
 
 	public Move maxAlphaBeta(Board board, int depth, double a, double b) {
 		Random r = new Random();
-
 		if((board.checkForGameOver()) || (depth == levelAI)) {
-			return new Move(board.getLastMove().getRow(), board.getLastMove().getColumn(), board.evaluate());
+			return new Move(board.getLastMove().getRow(),
+					board.getLastMove().getColumn(), board.evaluate());
 		}
 
 		ArrayList<Board> children = new ArrayList<>(board.getChildren(Constants.PLAYER1));
@@ -144,6 +144,7 @@ public class AI {
 			if (maxMove.getValue() >= b) {
 				return maxMove;
 			}
+
 			a = (a > maxMove.getValue()) ? a : maxMove.getValue();
 		}
 		return maxMove;
@@ -151,9 +152,9 @@ public class AI {
 
 	public Move minAlphaBeta(Board board, int depth, double a, double b) {
 		Random r = new Random();
-
 		if((board.checkForGameOver()) || (depth == levelAI)) {
-			return new Move(board.getLastMove().getRow(), board.getLastMove().getColumn(), board.evaluate());
+			return new Move(board.getLastMove().getRow(),
+					board.getLastMove().getColumn(), board.evaluate());
 		}
 
 		ArrayList<Board> children = new ArrayList<>(board.getChildren(Constants.PLAYER2));
@@ -177,6 +178,7 @@ public class AI {
 			if (minMove.getValue() <= a) {
 				return minMove;
 			}
+
 			b = (b < minMove.getValue()) ? b : minMove.getValue();
 		}
 		return minMove;
